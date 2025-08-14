@@ -116,39 +116,39 @@ class BibliorecaLibros:
                             print("Error. Este código ya fue ingresado, pruebe con otro código")
                         else:
                             break
-                while True:
-                    titulo = input("Ingrese el titulo del libro: ")
-                    if not titulo:
-                        print("Error. Campo requerido, ingrese el nombre del libro")
+            while True:
+                titulo = input("Ingrese el titulo del libro: ")
+                if not titulo:
+                    print("Error. Campo requerido, ingrese el nombre del libro")
+                else:
+                    break
+            while True:
+                autor = input("Ingrese el nombre del autor del libro: ")
+                if not autor:
+                    print("Error. Campo requerido, ingrese el nombre del autor.")
+                else:
+                    break
+            while True:
+                try:
+                    dia = int(input("Ingrese el dia de publicación del libro: "))
+                    mes = int(input("Ingrese el mes de publicación del libro: "))
+                    anio = int(input("Ingrese el año de publicación del libro: "))
+                    fecha_publicacion = date(anio, mes, dia)
+                    if fecha_publicacion > date.today():
+                        print("Error. Fecha de publicación invalida o inexistente")
                     else:
                         break
-                while True:
-                    autor = input("Ingrese el nombre del autor del libro: ")
-                    if not autor:
-                        print("Error. Campo requerido, ingrese el nombre del autor.")
+                except ValueError as e:
+                    if "day is out of range" in str(e):
+                        print("Error. El día ingresado no corresponde al mes. Por favor, revise el día.")
+                    elif "month must be in 1..12" in str(e):
+                        print("Error. El mes debe estar entre el rango 1 y 12.")
+                    elif "year is out of range" in str(e):
+                        print("Error. El año está fuera del rango permitido. ️")
                     else:
-                        break
-                while True:
-                    try:
-                        dia = int(input("Ingrese el dia de publicación del libro: "))
-                        mes = int(input("Ingrese el mes de publicación del libro: "))
-                        anio = int(input("Ingrese el año de publicación del libro: "))
-                        fecha_publicacion = date(anio, mes, dia)
-                        if fecha_publicacion > date.today():
-                            print("Error. Fecha de publicación invalida o inexistente")
-                        else:
-                            break
-                    except ValueError as e:
-                        if "day is out of range" in str(e):
-                            print("Error. El día ingresado no corresponde al mes. Por favor, revise el día.")
-                        elif "month must be in 1..12" in str(e):
-                            print("Error. El mes debe estar entre el rango 1 y 12.")
-                        elif "year is out of range" in str(e):
-                            print("Error. El año está fuera del rango permitido. ️")
-                        else:
-                            print("Error. La fecha ingresada es invalida. Por favor, use números validos. ️")
-                nuevo_libro = Libro(codigo, titulo, autor, fecha_publicacion)
-                self._libros.append(nuevo_libro)
+                        print("Error. La fecha ingresada es invalida. Por favor, use números validos. ️")
+            nuevo_libro = Libro(codigo, titulo, autor, fecha_publicacion)
+            self._libros.append(nuevo_libro)
 while True:
     bibliotecaA = BibliotecaUsuarios()
     bibliotecaB = BibliorecaLibros()
