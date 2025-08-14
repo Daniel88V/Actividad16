@@ -17,3 +17,7 @@ class BibliotecaUsuarios:
     def __init__(self):
         self._usuarios = []
     def registrar_usuario(self):
+        cont = int(input("Ingrese cuantos usuarios desea ingresar: "))
+        for i in range(cont):
+            print(f"Usuario#{i + 1}: ")
+            while True:
