@@ -45,6 +45,13 @@ class BibliotecaUsuarios:
                     break
             nuevo_usuario = Usuario(carnet, nombre, carrera)
             self._usuarios.append(nuevo_usuario)
+    def buscar_usuario(self):
+        def busqueda_secuencual(lista, objetivo):
+            for i in range(len(lista)):
+                if lista[i].upper() == objetivo.upper():
+                    return i
+            return None
+
 class BibliorecaLibros:
     def __init__(self):
         self._libros = []
