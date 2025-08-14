@@ -60,7 +60,8 @@ class BibliotecaUsuarios:
         else:
             print("Usuario no encontrado. Intente con otro carnet")
     def listado_usuarios(self):
-
+        for usuario in self._usuarios:
+            print(usuario)
 class BibliorecaLibros:
     def __init__(self):
         self._libros = []
