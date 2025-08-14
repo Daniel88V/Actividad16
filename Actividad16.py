@@ -136,14 +136,19 @@ class BibliorecaLibros:
                         else:
                             break
                     except ValueError as e:
-                        print(f"Error. La fecha ingresada no es valida {e}")
-                    except Exception as e:
-                        print(f"Error inesperado: {e}")
+                        if "day is out of range" in str(e):
+                            print("Error. El día ingresado no corresponde al mes. Por favor, revise el día.")
+                        elif "month must be in 1..12" in str(e):
+                            print("Error. El mes debe estar entre el rango 1 y 12.")
+                        elif "year is out of range" in str(e):
+                            print("Error. El año está fuera del rango permitido. ️")
+                        else:
+                            print("Error. La fecha ingresada es invalida. Por favor, use números validos. ️")
                 nuevo_libro = Libro(codigo, titulo, autor, fecha_publicacion)
                 self._libros.append(nuevo_libro)
 while True:
     bibliotecaA = BibliotecaUsuarios()
-    bibliotecaB = BibliorecaLibros
+    bibliotecaB = BibliorecaLibros()
     print("Menu")
     print("1. Registrar Usuario")
     print("2. Registrar Libro")
