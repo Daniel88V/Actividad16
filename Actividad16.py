@@ -59,9 +59,24 @@ class BibliotecaUsuarios:
             print(f"Carnet: {encontrado._carnet} | Usuario: {encontrado._nombre} | Carrera: {encontrado._carrera}")
         else:
             print("Usuario no encontrado. Intente con otro carnet")
+    def quick_sort(self, lista):
+        if len(lista) <= 1:
+            return lista
+        pivote = lista[0]
+        menores = [x for x in lista[1:] if x._nombre < pivote._nombre]
+        iguales = [x for x in lista if x._nombre == pivote._nombre]
+        mayores = [x for x in lista[1:] if x._nombre > pivote._nombre]
+        return self.quick_sort(menores) + iguales + self.quick_sort(mayores)
     def listado_usuarios(self):
+        print("-------Listado de usuarios--------")
+        """
         for usuario in self._usuarios:
             print(usuario)
+        """
+        alfabetico = self.quick_sort(self._usuarios)
+        for usuario in alfabetico:
+            print(usuario)
+        print("------------------------------------")
 class BibliorecaLibros:
     def __init__(self):
         self._libros = []
