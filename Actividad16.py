@@ -51,12 +51,16 @@ class BibliotecaUsuarios:
                 if lista[i].upper() == objetivo.upper():
                     return i
             return None
-        buscar = input("Ingrese el nombre del usuario: ")
-        users = [usuario._nombre for usuario in self._usuarios]
+        buscar = input("Ingrese el carnet del usuario: ")
+        users = [usuario._carnet for usuario in self._usuarios]
         lupa = busqueda_secuencual(users, buscar)
         if lupa is not None:
             encontrado = self._usuarios[lupa]
-            print(f"Usuario: {encontrado._nombre} | Carrera: {encontrado._carrera}")
+            print(f"Carnet: {encontrado._carnet} | Usuario: {encontrado._nombre} | Carrera: {encontrado._carrera}")
+        else:
+            print("Usuario no encontrado. Intente con otro carnet")
+    def listado_usuarios(self):
+
 class BibliorecaLibros:
     def __init__(self):
         self._libros = []
