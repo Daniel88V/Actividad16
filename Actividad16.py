@@ -77,6 +77,21 @@ class BibliotecaUsuarios:
         for usuario in alfabetico:
             print(usuario)
         print("------------------------------------")
+    def eliminar_usuario(self):
+        busqueda = input("Ingrese el carnet del usuario: ")
+        for est in self._usuarios:
+            if est._nombre.upper() == busqueda.upper():
+                print(f"Está seguro de eliminar al usuario: {est._nombre} (Si/No")
+                respuesta = input().upper()
+                if respuesta == "SI":
+                    self._usuarios.remove(est)
+                    print("Usuario eliminado")
+                    return
+                elif respuesta == "NO":
+                    break
+                else:
+                    print("Error. Respuesta no valida, por favor escriba si o no")
+            print("Usuario no encontrado")
 class BibliorecaLibros:
     def __init__(self):
         self._libros = []
