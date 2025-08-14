@@ -21,3 +21,13 @@ class BibliotecaUsuarios:
         for i in range(cont):
             print(f"Usuario#{i + 1}: ")
             while True:
+                codigo = input("Ingrese el nombre del usuario: ")
+                existe = False
+                for usuario in self._usuarios:
+                    if usuario._codigo.upper() == codigo.upper():
+                        existe = True
+                        break
+                if existe:
+                    print("Error.Usuario ya existente, ingrese un código distinto")
+                else:
+                    break
