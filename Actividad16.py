@@ -21,10 +21,10 @@ class BibliotecaUsuarios:
         for i in range(cont):
             print(f"Usuario#{i + 1}: ")
             while True:
-                codigo = input("Ingrese el codigo del usuario: ")
+                carnet = input("Ingrese el codigo del usuario: ")
                 existe = False
                 for usuario in self._usuarios:
-                    if usuario._codigo.upper() == codigo.upper():
+                    if usuario._carnet.upper() == carnet.upper():
                         existe = True
                         break
                 if existe:
@@ -38,13 +38,43 @@ class BibliotecaUsuarios:
                 else:
                     break
             while True:
-                carrera = input("Ingrese el carrera del usuario: ")
+                carrera = input("Ingrese la carrera del usuario: ")
                 if not carrera:
                     print("Error. Campo requerido, por favor ingrese la carrera del usuario.")
                 else:
                     break
-            nuevo_usuario = Usuario(codigo, nombre, carrera)
+            nuevo_usuario = Usuario(carnet, nombre, carrera)
             self._usuarios.append(nuevo_usuario)
+class BibliorecaLibros:
+    def __init__(self):
+        self._libros = []
+    def ingreso_libro(self):
+        cont = int(input("Ingrese cuantos libros ingresar: "))
+        for i in range(cont):
+            print(f"Libro#{i + 1}: ")
+            while True:
+                codigo = input("Ingrese el codigo del libro: ")
+                existe = False
+                for libro in self._libros:
+                    if libro._codigo.upper() == codigo.upper():
+                        existe = True
+                        break
+                    if existe:
+                        print("Error. Este código ya fue ingresado, pruebe con otro código")
+                    else:
+                        break
+                while True:
+                    titulo = input("Ingrese el titulo del libro: ")
+                    if not titulo:
+                        print("Error. Campo requerido, ingrese el nombre del libro")
+                    else:
+                        break
+                while True:
+                    autor = input("Ingrese el nombre del autor del libro: ")
+                    if not autor:
+                        print("Error. Campo requerido, ingrese el nombre del autor.")
+                    else:
+                        break
 while True:
     biblioteca = BibliotecaUsuarios()
     print("Menu")
