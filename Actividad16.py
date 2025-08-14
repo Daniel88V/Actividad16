@@ -68,15 +68,17 @@ class BibliotecaUsuarios:
         mayores = [x for x in lista[1:] if x._nombre > pivote._nombre]
         return self.quick_sort(menores) + iguales + self.quick_sort(mayores)
     def listado_usuarios(self):
-        print("-------Listado de usuarios--------")
-        """
-        for usuario in self._usuarios:
-            print(usuario)
-        """
-        alfabetico = self.quick_sort(self._usuarios)
-        for usuario in alfabetico:
-            print(usuario)
-        print("------------------------------------")
+        if not self._usuarios:
+            print("No se hay usuarios ingresados")
+        else:
+            print("-------Listado de usuarios--------")
+            for usuario in self._usuarios:
+                print(usuario)
+            print("Listado de usuarios en orden alfabetico")
+            alfabetico = self.quick_sort(self._usuarios)
+            for usuario in alfabetico:
+                print(usuario)
+            print("------------------------------------")
     def eliminar_usuario(self):
         busqueda = input("Ingrese el carnet del usuario: ")
         for est in self._usuarios:
