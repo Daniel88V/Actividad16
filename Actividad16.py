@@ -1,3 +1,4 @@
+from datetime import date, datetime
 class Libro:
     def __init__(self, codigo, titulo, autor, fecha_publicacion):
         self._codigo = codigo
@@ -124,10 +125,31 @@ class BibliorecaLibros:
                         print("Error. Campo requerido, ingrese el nombre del autor.")
                     else:
                         break
+                while True:
+                    try:
+                        dia = int(input("Ingrese el dia de publicación del libro: "))
+                        mes = int(input("Ingrese el mes de publicación del libro: "))
+                        anio = int(input("Ingrese el año de publicación del libro: "))
+                        fecha_publicacion = date(anio, mes, dia)
+                        if fecha_publicacion > date.today():
+                            print("Error. Fecha de publicación invalida o inexistente")
+                        else:
+                            break
+                    except ValueError as e:
+                        print(f"Error. La fecha ingresada no es valida {e}")
+                    except Exception as e:
+                        print(f"Error inesperado: {e}")
+                nuevo_libro = Libro(codigo, titulo, autor, fecha_publicacion)
+                self._libros.append(nuevo_libro)
 while True:
-    biblioteca = BibliotecaUsuarios()
+    bibliotecaA = BibliotecaUsuarios()
+    bibliotecaB = BibliorecaLibros
     print("Menu")
     print("1. Registrar Usuario")
+    print("2. Registrar Libro")
     opcion = input("Seleccione: ")
     if opcion == "1":
-        biblioteca.registrar_usuario()
+        bibliotecaA.registrar_usuario()
+    elif opcion == "2":
+        bibliotecaB.ingreso_libro()
+
