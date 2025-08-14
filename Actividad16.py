@@ -16,4 +16,4 @@ class Usuario:
 class BibliotecaUsuarios:
     def __init__(self):
         self._usuarios = []
-
+    def registrar_usuario(self):
