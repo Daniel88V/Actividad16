@@ -107,15 +107,15 @@ class BibliorecaLibros:
                 existe = False
                 if not codigo:
                     print("Error. campo requerido, por favor ingrese el código del libro")
-                else:
+                elif codigo:
                     for libro in self._libros:
                         if libro._codigo.upper() == codigo.upper():
                             existe = True
                             break
-                        if existe:
-                            print("Error. Este código ya fue ingresado, pruebe con otro código")
-                        else:
-                            break
+                if existe:
+                    print("Error. Este código ya fue ingresado, pruebe con otro código")
+                else:
+                    break
             while True:
                 titulo = input("Ingrese el titulo del libro: ")
                 if not titulo:
